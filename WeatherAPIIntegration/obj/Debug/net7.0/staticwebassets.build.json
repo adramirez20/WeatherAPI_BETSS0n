@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "07YSVSVSwMpTbm9om79SkDtBtFAlDuIUuOodKFos+Jo=",
+  "Source": "WeatherAPIIntegration",
+  "BasePath": "_content/WeatherAPIIntegration",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
