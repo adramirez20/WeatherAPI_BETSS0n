@@ -83,3 +83,10 @@ C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\
 C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\WeatherAPIIntegration\bin\Debug\net7.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\WeatherAPIIntegration\bin\Debug\net7.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\WeatherAPIIntegration\bin\Debug\net7.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\WeatherAPIIntegration\bin\Debug\net7.0\Humanizer.dll
+C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\WeatherAPIIntegration\bin\Debug\net7.0\MediatR.dll
+C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\WeatherAPIIntegration\bin\Debug\net7.0\MediatR.Contracts.dll
+C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\WeatherAPIIntegration\bin\Debug\net7.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\WeatherAPIIntegration\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\WeatherAPIIntegration\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ynn363\OneDrive - Corteva\Documents\ANDRE\MaltaTest\WeatherAPI_BETSS0n\WeatherAPIIntegration\bin\Debug\net7.0\Mono.TextTemplating.dll
