@@ -18,12 +18,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.20" />
+    <PackageReference Include="Remote.Linq.Newtonsoft.Json" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Queries\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Domain\Repositories\" />
     <Folder Include="Domain\ValueObjects\" />
     <Folder Include="Middleware\" />
