@@ -23,12 +23,23 @@ namespace WeatherAPIIntegration.Controllers
             return Ok(new { Username = username });
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginCommand command)
+        {
+            var token = await _mediator.Send(command);
+            return Ok(new { Token = token });
+        }
+
         [HttpGet("weather/{username}")]
         public async Task<IActionResult> GetWeather(string username)
         {
-            var query = new GetWeatherQuery(username);
-            var weather = await _mediator.Send(query);
-            return Ok(weather);
+            var query = new GetWeatherQuery(username); // Pass the username to the constructor
+            var result = await _mediator.Send(query);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
         }
     }
 }

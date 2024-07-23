@@ -8,9 +8,24 @@ namespace WeatherAPIIntegration.Domain.Services
 
         public Task<T> GetAsync<T>(string key)
         {
-            if (_cache.TryGetValue(key, out var cacheEntry) && cacheEntry.expiration > DateTime.UtcNow)
+            Console.WriteLine($"Attempting to retrieve key: {key}"); // Debugging line
+
+            if (_cache.TryGetValue(key, out var cacheEntry))
             {
-                return Task.FromResult((T)cacheEntry.value);
+                Console.WriteLine($"Cache hit for key: {key}"); // Debugging line
+                if (cacheEntry.expiration > DateTime.UtcNow)
+                {
+                    Console.WriteLine($"Cache entry is valid for key: {key}"); // Debugging line
+                    return Task.FromResult((T)cacheEntry.value);
+                }
+                else
+                {
+                    Console.WriteLine($"Cache entry expired for key: {key}"); // Debugging line
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Cache miss for key: {key}"); // Debugging line
             }
 
             return Task.FromResult(default(T));
@@ -18,6 +33,7 @@ namespace WeatherAPIIntegration.Domain.Services
 
         public Task SetAsync<T>(string key, T value, TimeSpan expiration)
         {
+            Console.WriteLine($"Setting cache for key: {key} with expiration: {expiration}"); // Debugging line
             var cacheEntry = (value, DateTime.UtcNow.Add(expiration));
             _cache[key] = cacheEntry;
             return Task.CompletedTask;
