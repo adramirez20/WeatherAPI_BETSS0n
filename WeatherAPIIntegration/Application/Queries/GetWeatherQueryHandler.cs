@@ -27,11 +27,11 @@ namespace WeatherAPIIntegration.Application.Queries
             }
 
             var cacheKey = $"weather_{user.LivingCountry}";
-            var cachedWeather = await _cacheService.GetAsync<WeatherDto>(cacheKey);
-            if (cachedWeather != null)
-            {
-                return cachedWeather;
-            }
+            //var cachedWeather = await _cacheService.GetAsync<WeatherDto>(cacheKey);
+            //if (cachedWeather != null)
+            //{
+            //    return cachedWeather;
+            //}
 
             var weatherData = await _weatherService.GetWeatherAsync(user.LivingCountry);
             await _cacheService.SetAsync(cacheKey, weatherData, TimeSpan.FromMinutes(30));

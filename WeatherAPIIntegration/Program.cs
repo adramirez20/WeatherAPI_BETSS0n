@@ -45,14 +45,15 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherAPIIntegration", Version = "v1" });
 
+    // Add JWT bearer token support
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Type = SecuritySchemeType.Http,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
         Scheme = "bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Name = "Authorization",
-        Description = "Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer abcdef12345\""
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\""
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -66,7 +67,7 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "Bearer"
                 }
             },
-            new[] { "Bearer" }
+            new string[] {}
         }
     });
 });
