@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using WeatherAPIIntegration.Application.Commands;
-using WeatherAPIIntegration.Domain.Services;
 using WeatherAPIIntegration.Infrastructure.Persistence;
+using WeatherAPIIntegration.Application.Commands;
+using WeatherAPIIntegration.Application.Queries;
 using WeatherAPIIntegration.Infrastructure.Repositories;
+using MediatR;
+using Microsoft.OpenApi.Models;
+using WeatherAPIIntegration.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add MediatR
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ApplicationLayerMarker).Assembly));
+builder.Services.AddMediatR(typeof(RegisterUserCommandHandler).Assembly, typeof(GetWeatherQueryHandler).Assembly);
 
 // Add Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -25,6 +27,8 @@ builder.Services.AddSwaggerGen(c =>
 // Register repositories and services
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddHttpClient<ICountryService, CountryService>();
+builder.Services.AddHttpClient<IWeatherService, WeatherService>();
+builder.Services.AddSingleton<ICacheService, CacheService>();
 
 var app = builder.Build();
 
