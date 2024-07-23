@@ -26,7 +26,8 @@ namespace WeatherAPIIntegration.Controllers
         [HttpGet("weather/{username}")]
         public async Task<IActionResult> GetWeather(string username)
         {
-            var result = await _mediator.Send(username);
+            var query = new GetWeatherQuery(username);
+            var result = await _mediator.Send(query);
             if (result == null)
             {
                 return NotFound();
