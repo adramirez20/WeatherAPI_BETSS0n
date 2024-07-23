@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using System.Text.RegularExpressions;
 using WeatherAPIIntegration.Domain.Entities;
 using WeatherAPIIntegration.Domain.Services;
 using WeatherAPIIntegration.DTOs;
@@ -10,7 +11,7 @@ namespace WeatherAPIIntegration.Application.Commands
     {
         private readonly IUserRepository _userRepository;
         private readonly ICountryService _countryService;
-
+        private static readonly Regex PhoneNumberRegex = new Regex(@"^\+\d{1,3}\d{4,14}$");
         public RegisterUserCommandHandler(IUserRepository userRepository, ICountryService countryService)
         {
             _userRepository = userRepository;
@@ -19,13 +20,24 @@ namespace WeatherAPIIntegration.Application.Commands
 
         public async Task<UserDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
+            if (!PhoneNumberRegex.IsMatch(request.PhoneNumber))
+            {
+                throw new Exception("Invalid phone number format. It must start with a '+' followed by the country code.");
+            }
+
+            var username = UsernameGenerator.Generate(request.FirstName, request.LastName);
+            if (await _userRepository.UsernameExistsAsync(username))
+            {
+                throw new Exception("Username already exists.");
+            }
+
             var countryCode = await _countryService.GetCountryCode(request.LivingCountry);
             if (string.IsNullOrEmpty(countryCode))
             {
                 throw new Exception("Invalid country code.");
             }
 
-            var username = UsernameGenerator.Generate(request.FirstName, request.LastName);
+
             var user = new User
             {
                 Id = Guid.NewGuid(),
@@ -39,7 +51,7 @@ namespace WeatherAPIIntegration.Application.Commands
                 PhoneNumber = request.PhoneNumber,
                 LivingCountry = request.LivingCountry,
                 CitizenCountry = request.CitizenCountry,
-                CountryCode= countryCode
+                CountryCode = countryCode
             };
 
             await _userRepository.AddAsync(user);
