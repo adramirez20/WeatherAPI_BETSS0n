@@ -19,8 +19,8 @@ namespace WeatherAPIIntegration.Application.Commands
 
         public async Task<UserDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            var isValidCountry = await _countryService.ValidateCountry(request.LivingCountry);
-            if (!isValidCountry)
+            var countryCode = await _countryService.GetCountryCode(request.LivingCountry);
+            if (string.IsNullOrEmpty(countryCode))
             {
                 throw new Exception("Invalid country code.");
             }
@@ -33,7 +33,7 @@ namespace WeatherAPIIntegration.Application.Commands
                 LastName = request.LastName,
                 Username = username,
                 Email = request.Email,
-                Password = request.Password, 
+                Password = request.Password,
                 Address = request.Address,
                 Birthdate = request.Birthdate,
                 PhoneNumber = request.PhoneNumber,

@@ -2,6 +2,6 @@
 {
     public interface ICountryService
     {
-        public Task<bool> ValidateCountry(string countryCode);
+        public Task<string> GetCountryCode(string country);
     }
 }
