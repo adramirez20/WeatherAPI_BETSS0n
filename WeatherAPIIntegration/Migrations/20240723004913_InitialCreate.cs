@@ -25,7 +25,8 @@ namespace WeatherAPIIntegration.Migrations
                     Birthdate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     PhoneNumber = table.Column<string>(type: "TEXT", nullable: false),
                     LivingCountry = table.Column<string>(type: "TEXT", nullable: false),
-                    CitizenCountry = table.Column<string>(type: "TEXT", nullable: false)
+                    CitizenCountry = table.Column<string>(type: "TEXT", nullable: false),
+                    CountryCode = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -37,6 +37,10 @@ namespace WeatherAPIIntegration.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("CountryCode")
+                   .IsRequired()
+                   .HasColumnType("TEXT");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");

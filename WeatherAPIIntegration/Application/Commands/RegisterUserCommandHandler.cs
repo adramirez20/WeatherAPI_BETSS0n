@@ -38,7 +38,8 @@ namespace WeatherAPIIntegration.Application.Commands
                 Birthdate = request.Birthdate,
                 PhoneNumber = request.PhoneNumber,
                 LivingCountry = request.LivingCountry,
-                CitizenCountry = request.CitizenCountry
+                CitizenCountry = request.CitizenCountry,
+                CountryCode= countryCode
             };
 
             await _userRepository.AddAsync(user);

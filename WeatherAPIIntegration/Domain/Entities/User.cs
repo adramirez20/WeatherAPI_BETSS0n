@@ -13,5 +13,7 @@
         public string PhoneNumber { get; set; }
         public string LivingCountry { get; set; }
         public string CitizenCountry { get; set; }
+
+        public string CountryCode { get; set; }
     }
 }
