@@ -26,6 +26,14 @@ ttestmaltalast34120
 
 ![image](https://github.com/user-attachments/assets/55c81734-6b0f-4714-81ba-621c2d1fa38d)
 
+to login 
+You must log in to the application with the following username and password
+{
+  "username": "aramirez16035",
+  "password": "Teddy7890"
+}
+
+After receiving the response from the login endpoint, which is a specific token, go to the top of Swagger and place the word Bearer followed by the generated token.
 
 to register new users:
 {
