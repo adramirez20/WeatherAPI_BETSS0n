@@ -35,7 +35,7 @@ namespace WeatherAPIIntegration.Application.Commands
             var countryCode = await _countryService.GetCountryCode(request.LivingCountry);
             if (string.IsNullOrEmpty(countryCode))
             {
-                throw new UsernameAlreadyExistsException("Username already exists.");
+                throw new InvalidCountryCodeException("Invalid country code.");
             }
 
 

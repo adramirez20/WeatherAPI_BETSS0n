@@ -13,7 +13,7 @@ public class RegistrationController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost]
+    [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterUserCommand command)
     {
         var result = await _mediator.Send(command);
