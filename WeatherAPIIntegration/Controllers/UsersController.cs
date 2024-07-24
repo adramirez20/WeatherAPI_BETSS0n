@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WeatherAPIIntegration.Application.Commands;
 using WeatherAPIIntegration.Application.Queries;
@@ -22,7 +23,7 @@ namespace WeatherAPIIntegration.Controllers
             var token = await _mediator.Send(command);
             return Ok(new { Token = token });
         }
-
+        [Authorize]
         [HttpGet("weather/{username}")]
         public async Task<IActionResult> GetWeather(string username)
         {
