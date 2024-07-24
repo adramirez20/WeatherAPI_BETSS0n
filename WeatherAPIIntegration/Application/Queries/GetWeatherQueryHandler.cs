@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using WeatherAPIIntegration.Domain.Services;
+using WeatherAPIIntegration.Application.Services;
 using WeatherAPIIntegration.DTOs;
 using WeatherAPIIntegration.Infrastructure.Repositories;
 

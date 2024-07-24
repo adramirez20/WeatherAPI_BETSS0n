@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using WeatherAPIIntegration.Application.Exeptions;
 using WeatherAPIIntegration.Infrastructure.Repositories;
 
 namespace WeatherAPIIntegration.Application.Commands
@@ -23,7 +24,7 @@ namespace WeatherAPIIntegration.Application.Commands
             var user = await _userRepository.GetByUsernameAsync(request.Username);
             if (user == null || user.Password != request.Password)
             {
-                throw new UnauthorizedAccessException("Invalid username or password.");
+                throw new UserNotFoundException("Invalid username or password.");
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();

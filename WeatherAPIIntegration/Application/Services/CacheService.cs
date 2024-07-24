@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace WeatherAPIIntegration.Domain.Services
+namespace WeatherAPIIntegration.Application.Services
 {
     public class CacheService : ICacheService
     {
@@ -17,19 +17,19 @@ namespace WeatherAPIIntegration.Domain.Services
                 }
                 else
                 {
-                    Console.WriteLine($"Cache entry expired for key: {key}"); 
+                    Console.WriteLine($"Cache entry expired for key: {key}");
                 }
             }
             else
             {
-                Console.WriteLine($"Cache miss for key: {key}"); 
+                Console.WriteLine($"Cache miss for key: {key}");
             }
 
             return Task.FromResult(default(T));
         }
 
         public Task SetAsync<T>(string key, T value, TimeSpan expiration)
-        {      
+        {
             var cacheEntry = (value, DateTime.UtcNow.Add(expiration));
             _cache[key] = cacheEntry;
             return Task.CompletedTask;

@@ -1,4 +1,4 @@
-﻿namespace WeatherAPIIntegration.Domain.Services
+﻿namespace WeatherAPIIntegration.Application.Services
 {
     public static class UsernameGenerator
     {

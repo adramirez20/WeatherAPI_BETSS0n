@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using WeatherAPIIntegration.DTOs;
 
-namespace WeatherAPIIntegration.Domain.Services
+namespace WeatherAPIIntegration.Application.Services
 {
     public class WeatherService : IWeatherService
     {

@@ -1,7 +1,8 @@
 ﻿using MediatR;
 using System.Text.RegularExpressions;
+using WeatherAPIIntegration.Application.Exeptions;
+using WeatherAPIIntegration.Application.Services;
 using WeatherAPIIntegration.Domain.Entities;
-using WeatherAPIIntegration.Domain.Services;
 using WeatherAPIIntegration.DTOs;
 using WeatherAPIIntegration.Infrastructure.Repositories;
 
@@ -22,19 +23,19 @@ namespace WeatherAPIIntegration.Application.Commands
         {
             if (!PhoneNumberRegex.IsMatch(request.PhoneNumber))
             {
-                throw new Exception("Invalid phone number format. It must start with a '+' followed by the country code.");
+                throw new InvalidPhoneNumberFormatException("Invalid phone number format. It must start with a '+' followed by the country code.");
             }
 
             var username = UsernameGenerator.Generate(request.FirstName, request.LastName);
             if (await _userRepository.UsernameExistsAsync(username))
             {
-                throw new Exception("Username already exists.");
+                throw new UsernameAlreadyExistsException("Username already exists.");
             }
 
             var countryCode = await _countryService.GetCountryCode(request.LivingCountry);
             if (string.IsNullOrEmpty(countryCode))
             {
-                throw new Exception("Invalid country code.");
+                throw new UsernameAlreadyExistsException("Username already exists.");
             }
 
 

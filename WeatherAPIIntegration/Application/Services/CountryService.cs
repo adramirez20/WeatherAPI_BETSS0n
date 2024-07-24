@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace WeatherAPIIntegration.Domain.Services
+namespace WeatherAPIIntegration.Application.Services
 {
     public class CountryService : ICountryService
     {

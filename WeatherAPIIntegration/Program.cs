@@ -5,10 +5,11 @@ using WeatherAPIIntegration.Application.Queries;
 using WeatherAPIIntegration.Infrastructure.Repositories;
 using MediatR;
 using Microsoft.OpenApi.Models;
-using WeatherAPIIntegration.Domain.Services;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using WeatherAPIIntegration.Middleware;
+using WeatherAPIIntegration.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -89,7 +90,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers();
 
 app.Run();
