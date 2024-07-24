@@ -42,7 +42,7 @@ public class GetWeatherQueryHandlerTests
     {
 
         var query = new GetWeatherQuery("existingUser");
-        var user = new User { Username = query.Username, LivingCountry = "Country" };
+        var user = new User { UserName = query.Username, LivingCountry = "Country" };
         var cachedWeather = new WeatherDto { Location = "Country", Temperature = "20", Condition = "Sunny" };
 
         _mockUserRepository.Setup(repo => repo.GetByUsernameAsync(query.Username))
@@ -61,7 +61,7 @@ public class GetWeatherQueryHandlerTests
     public async Task Handle_CachedWeatherNotExists_FetchesWeatherAndCachesIt()
     {
         var query = new GetWeatherQuery("existingUser");
-        var user = new User { Username = query.Username, LivingCountry = "Country" };
+        var user = new User { UserName = query.Username, LivingCountry = "Country" };
         var weatherData = new WeatherDto { Location = "Country", Temperature = "25", Condition = "Cloudy" };
 
         _mockUserRepository.Setup(repo => repo.GetByUsernameAsync(query.Username))

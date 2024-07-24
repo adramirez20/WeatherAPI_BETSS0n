@@ -26,8 +26,8 @@ namespace WeatherAPIIntegration.Application.Commands
                 throw new InvalidPhoneNumberFormatException("Invalid phone number format. It must start with a '+' followed by the country code.");
             }
 
-            var username = UsernameGenerator.Generate(request.FirstName, request.LastName);
-            if (await _userRepository.UsernameExistsAsync(username))
+            var newUserName = UsernameGenerator.Generate(request.FirstName, request.LastName);
+            if (await _userRepository.UsernameExistsAsync(newUserName))
             {
                 throw new UsernameAlreadyExistsException("Username already exists.");
             }
@@ -44,7 +44,7 @@ namespace WeatherAPIIntegration.Application.Commands
                 Id = Guid.NewGuid(),
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                Username = username,
+                UserName = newUserName,
                 Email = request.Email,
                 Password = request.Password,
                 Address = request.Address,
@@ -57,7 +57,7 @@ namespace WeatherAPIIntegration.Application.Commands
 
             await _userRepository.AddAsync(user);
 
-            return new UserDto { Id = user.Id, Username = user.Username, Email = user.Email };
+            return new UserDto { Id = user.Id, Username = user.UserName, Email = user.Email };
         }
     }
 }

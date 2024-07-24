@@ -32,7 +32,7 @@ namespace WeatherAPIIntegration.Application.Commands
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {            
-                    new Claim(JwtRegisteredClaimNames.Sub, user.Username),             
+                    new Claim(JwtRegisteredClaimNames.Sub, user.UserName),             
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),

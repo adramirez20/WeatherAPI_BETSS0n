@@ -21,12 +21,12 @@ namespace WeatherAPIIntegration.Infrastructure.Repositories
 
         public async Task<User> GetByUsernameAsync(string username)
         {
-            return await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
+            return await _context.Users.SingleOrDefaultAsync(u => u.UserName == username);
         }
 
         public async Task<bool> UsernameExistsAsync(string username)
         {
-            return await _context.Users.AnyAsync(u => u.Username == username);
+            return await _context.Users.AnyAsync(u => u.UserName == username);
         }
     }
 }
